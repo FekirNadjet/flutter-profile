@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_pro/carousel_pro.dart';
 
 import 'AccountPage.dart';
-import 'AnnoncesPage.dart';
-import 'ConservationAgence.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -13,23 +10,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
-  bool _isLoading = false;
   Widget callPage(int current) {
     switch (current) {
       case 0:
-        return Annonces();
-        break;
-      case 1:
-        return null;
-        break;
-      case 2:
-        return ExampleScreen();
-        break;
-      case 3:
-        return null;
-        break;
-      case 4:
-        return DestinationView();
+        return ProfileScreen();
         break;
       default:
         return null;
