@@ -1,9 +1,9 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ihm/EditProfile.dart';
-import 'package:flutter_app_ihm/listePropos.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'AccountPage.dart';
 import 'ajoutAnnonce.dart';
 import 'constants.dart';
 import 'contact.dart';
@@ -13,7 +13,7 @@ import 'widgets/profile_list_item.dart';
 
 
 
-  class ProfileScreen extends StatelessWidget {
+  class ListePropos extends StatelessWidget {
   createLanguageDialog(BuildContext context){
     return showDialog(context: context,builder:(context){
       return AlertDialog(
@@ -117,7 +117,12 @@ import 'widgets/profile_list_item.dart';
           SizedBox(height: kSpacingUnit.w * 1),
           IconButton(
                 icon:Icon(Icons.settings),
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => ProfileScreen()),
+                    );
+                },
                 //size: ScreenUtil().setSp(kSpacingUnit.w * 2),
                 color:Colors.white,
               ),
@@ -130,7 +135,7 @@ import 'widgets/profile_list_item.dart';
                     children:<Widget>[
                       Container(
       
-      height: kSpacingUnit.w*5.5,
+      height: kSpacingUnit.w*8,
       margin:
       EdgeInsets.symmetric(
         horizontal: kSpacingUnit.w*4,
@@ -152,12 +157,9 @@ import 'widgets/profile_list_item.dart';
         color:Colors.white10,),
       child: Row(
         children:<Widget>[
-          Icon(
-            LineAwesomeIcons.journal_of_the_whills,
-            size:kSpacingUnit.w*2.5
-            ),
+          Image(image: AssetImage('assets/images/appartement.jpg'),height: 100,width: 100,),
           SizedBox(width:kSpacingUnit.w*2.5),
-          Text("Journal",
+          Text("Appartement",
           style:kTitleTextStyle.copyWith(
             fontWeight:FontWeight.w500,
           ) ,
@@ -168,7 +170,7 @@ import 'widgets/profile_list_item.dart';
                 onPressed: (){
                     Navigator.push(
                       context,   
-                      MaterialPageRoute(builder: (_) => Journal()),
+                      MaterialPageRoute(builder: (_) => AjoutAnnoncePage()),
                     );},
 
               ),
@@ -181,7 +183,7 @@ import 'widgets/profile_list_item.dart';
 
     Container(
       
-      height: kSpacingUnit.w*5.5,
+      height: kSpacingUnit.w*8,
       margin:
       EdgeInsets.symmetric(
         horizontal: kSpacingUnit.w*4,
@@ -203,12 +205,9 @@ import 'widgets/profile_list_item.dart';
         color:Colors.white10,),
       child: Row(
         children:<Widget>[
-          Icon(
-            LineAwesomeIcons.language,
-            size:kSpacingUnit.w*2.5
-            ),
+         Image(image: AssetImage('assets/images/appartement2.jpg'),height: 100,width: 100,),
           SizedBox(width:kSpacingUnit.w*2.5),
-          Text("Langue",
+          Text("Studio",
           style:kTitleTextStyle.copyWith(
             fontWeight:FontWeight.w500,
           ) ,
@@ -216,14 +215,17 @@ import 'widgets/profile_list_item.dart';
           Spacer(),
           IconButton(
                 icon:Icon(LineAwesomeIcons.angle_right,size:kSpacingUnit.w*2.5,),     
-                onPressed: (){ createLanguageDialog(context);},
+                onPressed: (){ Navigator.push(
+                      context,   
+                      MaterialPageRoute(builder: (_) => AjoutAnnoncePage()),
+                    );},
               ),
         ],
       ),
     ),
     Container(
       
-      height: kSpacingUnit.w*5.5,
+      height: kSpacingUnit.w*8,
       margin:
       EdgeInsets.symmetric(
         horizontal: kSpacingUnit.w*4,
@@ -245,12 +247,10 @@ import 'widgets/profile_list_item.dart';
         color:Colors.white10,),
       child: Row(
         children:<Widget>[
-          Icon(
-            LineAwesomeIcons.phone,
-            size:kSpacingUnit.w*2.5
-            ),
+                   Image(image: AssetImage('assets/images/studio.jpg'),height: 100,width: 100,),
+
           SizedBox(width:kSpacingUnit.w*2.5),
-          Text("Contact",
+          Text("Villa",
           style:kTitleTextStyle.copyWith(
             fontWeight:FontWeight.w500,
           ) ,
@@ -261,7 +261,7 @@ import 'widgets/profile_list_item.dart';
                 onPressed: (){
                     Navigator.push(
                       context,   
-                      MaterialPageRoute(builder: (_) => ContactUs()),
+                      MaterialPageRoute(builder: (_) => AjoutAnnoncePage()),
                     );},
 
               ),
@@ -271,56 +271,7 @@ import 'widgets/profile_list_item.dart';
         ],
       ),
     ),
-    Container(
-      
-      height: kSpacingUnit.w*5.5,
-      margin:
-      EdgeInsets.symmetric(
-        horizontal: kSpacingUnit.w*4,
-      ).copyWith(
-        bottom:kSpacingUnit.w*2,
-      ),
-      padding: EdgeInsets.symmetric(horizontal: kSpacingUnit.w*2,),
-      decoration:
-      
-       BoxDecoration(
-         boxShadow:[BoxShadow(
-        color: Colors.grey[100],
-        offset: Offset(2.0,2.0),
-        blurRadius: 5.0,
-        spreadRadius: 1.0,
-      ),],
-         
-        borderRadius: BorderRadius.circular(kSpacingUnit.w*1),
-        color:Colors.white10,),
-      child: Row(
-        children:<Widget>[
-          Icon(
-            LineAwesomeIcons.alternate_sign_out,
-            size:kSpacingUnit.w*2.5
-            ),
-          SizedBox(width:kSpacingUnit.w*2.5),
-          Text("Déconnexion",
-          style:kTitleTextStyle.copyWith(
-            fontWeight:FontWeight.w500,
-          ) ,
-          ),
-          Spacer(),
-          IconButton(
-                icon:Icon(LineAwesomeIcons.angle_right,size:kSpacingUnit.w*2.5,),     
-                onPressed: (){
-                    Navigator.push(
-                      context,   
-                      MaterialPageRoute(builder: (_) => EditeProfile()),
-                    );},
-
-              ),
-         
-
-
-        ],
-      ),
-    ),
+   
 
                     ],
                   ),
@@ -361,7 +312,14 @@ import 'widgets/profile_list_item.dart';
             
             
           ),
-      )  
+      ) , 
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.blue,
+      ),
     );
 
   }

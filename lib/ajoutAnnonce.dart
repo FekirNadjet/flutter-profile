@@ -1,37 +1,73 @@
-
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ihm/EditProfile.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'constants.dart';
+import 'widgets/profile_list_item.dart';
 
-import 'AccountPage.dart';
-import 'ListItems/GridItemArray.dart';
 
-
-class AjoutAnnoncePage extends StatefulWidget {
-    
-    AjoutAnnoncePage();
-  @override
-  _AjoutAnnonceState createState() => _AjoutAnnonceState();
-}
-
-class _AjoutAnnonceState extends State<AjoutAnnoncePage> {
-  bool _isSaved = false;
-  _AjoutAnnonceState() ;
-  int currentIndex = 0;
-  bool _isLoading = false;
-  Widget callPage(int current) {
-    switch (current) {
-      default:
-        return null;
-    }
-  }
+class AjoutAnnoncePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var header=Column(
+        children: <Widget>[
+          SizedBox(height: kSpacingUnit.w * 5),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              SizedBox(height: kSpacingUnit.w * 3),
+              IconButton(
+                icon:Icon(Icons.home),
+                onPressed: (){},
+                color:Colors.white,
 
-    return  Scaffold(
-        body: Center(
+              ),
+              CircleAvatar(
+                  radius: kSpacingUnit.w * 5,
+                  backgroundImage: AssetImage('assets/images/profile.jpg'),
+                ),
+              IconButton(
+                icon:Icon(Icons.edit),
+              
+                onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => EditeProfile()),
+                    );},
+                color:Colors.white,
+
+              ),
+              SizedBox(height: kSpacingUnit.w * 3),
+            ],
+
+          ),
+          SizedBox(height: kSpacingUnit.w * 1),
+          IconButton(
+                icon:Icon(Icons.settings),
+                onPressed: (){},
+                //size: ScreenUtil().setSp(kSpacingUnit.w * 2),
+                color:Colors.white,
+              ),
+        ],
+      );
+    ScreenUtil.init(context, height: 896, width: 414, allowFontScaling: true);
+
+
+
+
+    return 
+
+
+Scaffold(
+        body: 
+        
+        
+        Center(
           child:  CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
-                title:Text("Annonce Detail Page",
+                title:Text("Modifier l'annonce",
                   style: TextStyle(
                       fontFamily: "Sans",
                       color: Colors.white,
@@ -39,48 +75,108 @@ class _AjoutAnnonceState extends State<AjoutAnnoncePage> {
                       fontSize: 25.0),),
                 backgroundColor: Colors.blue,
                 expandedHeight: 300.0,
-                flexibleSpace:  FlexibleSpaceBar(
-                  title:  Text(
-                    "hello"+ "\n"+
-                    "4444"+ "\n"+
-                    "7676273",
-                    style: TextStyle(
-                        fontFamily: "Sans",
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 11.0),
-                  ) ,
-                  background: Image.asset("assets/images/profile.jpg"),
+                flexibleSpace:  FlexibleSpaceBar(                   
+                  background: Image( image:AssetImage('assets/images/appartement.jpg'),),     
 
                 )
               ),
               SliverFixedExtentList(
-                itemExtent:140.0,
+                itemExtent:100.0,
                 delegate: SliverChildListDelegate([
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0,top:30),
+                    padding: const EdgeInsets.only(top:10,left: 20.0,right: 20),
                     child:
-                    Text(
-                      'Description du bien ',
-                      style: TextStyle(
-                          fontFamily: "Sans",
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.0),
+                    Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: <Widget>[
+                        Image(image: AssetImage('assets/images/appartement.jpg'),height: 100,width: 100,),
+                        Image(image: AssetImage('assets/images/studio.jpg'),height: 100,width: 100,),
+                        ButtonTheme(
+                          minWidth: 80.0,
+                          height: 80.0,
+                          child: FlatButton(
+                          
+                          shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3.0),
+                          side: BorderSide(color: Colors.blue)),
+                          textColor: Colors.blue,
+                          padding: EdgeInsets.all(8.0),
+                          onPressed: () {},
+                          child:
+                          Icon(Icons.add)
+                       ),
+                          
+                        ),
+                        
+                        ],
+                  ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(top:20,left: 20.0,right: 20),
+                    child:
+                    Column(
+                      children: <Widget>[
+                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                            Text("Appartement"),
+                            Icon(Icons.edit),
+                            ],
+                            ),
+                            Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                            Text("17 Rue Chaouche Amar Naciria Boumerdes"),
+                            Icon(Icons.edit),
+                            ],
+                            ),
+                            Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                            Text("15 000 000 DA"),
+                            Icon(Icons.edit),
+                            ],
+                            ),
+
+                      ]
+                    )
+                     
+                  ),
+                 
+                  Padding(
+                    padding: const EdgeInsets.only(top:10,left: 20.0,right: 20),
+                    child:
+                    Column(
+                      children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                            Text(
+                              'Description du bien ',
+                              style: TextStyle(
+                              fontFamily: "Sans",
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.0),
+                            ),
+                            Icon(Icons.edit),
+                            ],
+                          ),
+                          Text(
+                            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+                            style: TextStyle(
+                              fontFamily: "Sans",
+                              color: Colors.black26,
+                              fontWeight: FontWeight.w300,
+                              fontSize: 18.0),
+                          ),
+                      ]
                     ),
                   ),
-                Padding(
-                padding: const EdgeInsets.only(left: 20.0,top:10),
-                  child:
-                  Text(
-                    'descriptionnnnnnnnnnnn',
-                    style: TextStyle(
-                        fontFamily: "Sans",
-                        color: Colors.black26,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18.0),
-                  ),
-              ),
+                  
+                
+
                 ]
                 ),
               ),
@@ -88,53 +184,8 @@ class _AjoutAnnonceState extends State<AjoutAnnoncePage> {
             ],
           )
         ),
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Color(0xFF919191),
-        type: BottomNavigationBarType.fixed,
-        currentIndex: currentIndex,
-        fixedColor: Color(0xFF4668D9),
-        onTap: (value) {
-          currentIndex = value;
-          setState(() {});
-        },
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                size: 33.0,
-              ),
-              title: Container(
-                height: 0.0,
-              )),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.assessment, size: 30.0,),
-            title: Container(
-              height: 0.0,
-            ),
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.view_list, size: 33.0,),
-              title: Container(
-                height: 0.0,
-              )),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.bookmark,
-                size: 33.0,
-              ),
-              title: Container(
-                height: 0.0,
-              )),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                size: 33.0,
-              ),
-              title: Container(
-                height: 0.0,
-              )),
-        ],
-      ),
+      
       );
-  }
-}
+   
+    }
+    }

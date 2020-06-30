@@ -53,6 +53,10 @@ flutter:
   
   assets:
     - assets/images/profile.jpg
+    - assets/images/appartement.jpg
+    - assets/images/appartement2.jpg
+    - assets/images/studio.jpg
+    - assets/images/logement.jpg
     - assets/images/background.jpg
     - assets/images/journal.png
     - assets/icons/calculate-24px.svg
